@@ -1,38 +1,233 @@
-.App {
-  text-align: center;
+:root {
+  /* Light Mode (Default) */
+  --classic-white: #ffffff;
+  --classic-black: #000000;
+  --bg-primary: var(--classic-white);
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #e5e5e5;
+  --text-primary: var(--classic-black);
+  --text-secondary: rgba(0, 0, 0, 0.8);
+  --border-color: rgba(0, 0, 0, 0.2);
+  --border-color-hover: rgba(0, 0, 0, 0.4);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-secondary: rgba(245, 245, 245, 0.6);
+  --glass-bg-light: rgba(255, 255, 255, 0.5);
+
+  --primary-color: #ffffff;
+  --secondary-color: #000000;
+  --text-color: #000000;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --box-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Dark Mode */
+[data-theme="dark"] {
+  --bg-primary: var(--classic-black);
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #2a2a2a;
+  --text-primary: var(--classic-white);
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(255, 255, 255, 0.2);
+  --border-color-hover: rgba(255, 255, 255, 0.4);
+  --shadow-color: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(0, 0, 0, 0.7);
+  --glass-bg-secondary: rgba(26, 26, 26, 0.6);
+  --glass-bg-light: rgba(0, 0, 0, 0.5);
+
+  --primary-color: #000000;
+  --secondary-color: #ffffff;
+  --text-color: #ffffff;
+  --box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1),
+    0 2px 4px -1px rgba(255, 255, 255, 0.06);
+  --box-shadow-lg: 0 20px 25px -5px rgba(255, 255, 255, 0.1),
+    0 10px 10px -5px rgba(255, 255, 255, 0.04);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
+  z-index: 1;
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  border: 2px solid var(--border-color);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.card:hover {
+  border-color: var(--border-color-hover);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.card h3 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--secondary-color);
+}
+
+form.card {
+  background: var(--glass-bg-secondary);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid var(--border-color-hover);
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid var(--border-color-hover);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  color: var(--text-primary);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px var(--shadow-color);
+  background: var(--bg-primary);
+}
+
+input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  background: var(--secondary-color);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--primary-color);
+  border: 2px solid var(--secondary-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+button[type="submit"]:hover {
+  box-shadow: 0 6px 20px var(--shadow-color);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+thead {
+  background: var(--secondary-color);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+thead th {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+tbody tr {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+tbody tr:hover {
+  background: var(--glass-bg-secondary);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+td button {
+  padding: 0.5rem 1rem;
+  background: var(--secondary-color);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  color: var(--primary-color);
+  border: 2px solid var(--secondary-color);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+td button:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  table {
+    font-size: 0.875rem;
+  }
+
+  th,
+  td {
+    padding: 0.75rem;
   }
 }
